@@ -1,3 +1,6 @@
+const path = require('path');
+app.use(express.static(path.resolve(__dirname, 'public')));
+//app.use(express.static) // Zakładając, że index.htm jest w folderze 'public'
 const express = require("express")
 const mongoose = require("mongoose")
 const cors = require("cors")
@@ -179,4 +182,4 @@ const PORT = process.env.PORT || 5000
 app.listen(PORT, () => {
 	console.log(`🚀 Serwer działa na porcie ${PORT}`)
 })
-app.use(express.static) // Zakładając, że index.htm jest w folderze 'public'
+
