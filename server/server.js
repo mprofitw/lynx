@@ -55,7 +55,6 @@ app.get("/api/tenants/:user", async (req, res) => {
 
 // Tutaj dodaj resztę swoich endpointów (Reports, Settings) analogicznie...
 
-// 6. STRONA GŁÓWNA - NA SAMYM KOŃCU
-app.get('*', (req, res) => {
+app.get('(.*)', (req, res) => {
     res.sendFile(path.join(folderGłówny, 'index.htm'));
 });
