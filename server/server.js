@@ -1,11 +1,10 @@
-
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const path = require('path');
 require("dotenv").config();
 
-const app = express(); // TO JEST JEDYNA DEKLARACJA APP
+const app = express(); // JEDYNA deklaracja w całym pliku
 
 // 1. MODELE
 const MonthlyReport = require("./models/MonthlyReport");
@@ -17,7 +16,7 @@ app.use(cors());
 app.use(express.json());
 
 // 3. OBSŁUGA FRONTENDU
-// Wyjście z folderu /server do głównego katalogu, gdzie jest index.htm
+// Wychodzimy z folderu /server do głównego katalogu lynx
 const frontendPath = path.resolve(__dirname, '..');
 app.use(express.static(frontendPath));
 
@@ -121,7 +120,8 @@ app.delete("/api/tenants/:id", async (req, res) => {
     }
 });
 
-// 6. OBSŁUGA STRONY GŁÓWNEJ (Fallback)
+// 6. OBSŁUGA FRONTENDU (Fallback)
+// Ważne: to musi być na samym końcu endpointów API
 app.get('*', (req, res) => {
     res.sendFile(path.join(frontendPath, 'index.htm'));
 });
