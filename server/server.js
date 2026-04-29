@@ -1,5 +1,5 @@
 const path = require('path');
-app.use(express.static(path.resolve(__dirname, 'public')));
+app.use(express.static(path.resolve(__dirname)));
 //app.use(express.static) // Zakładając, że index.htm jest w folderze 'public'
 const express = require("express")
 const mongoose = require("mongoose")
