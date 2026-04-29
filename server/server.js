@@ -14,15 +14,16 @@ const path = require('path');
 //app.use(express.static) // Zakładając, że index.htm jest w folderze 'public'
 // 1. IMPORT MODELU (Ważne, aby endpoint wiedział co to jest MonthlyReport)
 const app = express();
-
+const frontendPath = path.resolve(__dirname, '..');
+app.use(express.static(frontendPath));
 // 1. Middleware
 app.use(express.json());
 
-// 2. Ścieżka do frontendu (wyjście z folderu 'server' do głównego katalogu)
-const frontendPath = path.resolve(__dirname, '..');
+// // 2. Ścieżka do frontendu (wyjście z folderu 'server' do głównego katalogu)
+// const frontendPath = path.resolve(__dirname, '..');
 
-// 3. Serwowanie plików statycznych (HTML, CSS, JS)
-app.use(express.static(frontendPath));
+// // 3. Serwowanie plików statycznych (HTML, CSS, JS)
+// app.use(express.static(frontendPath));
 
 // 4. Twoje trasy API (przykład)
 // app.use('/api/tenants', tenantRoutes);
