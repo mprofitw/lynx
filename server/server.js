@@ -5,14 +5,32 @@ const cors = require("cors")
 require("dotenv").config()
 const path = require('path');
 
-app.use(express.static(path.resolve(__dirname, '../')));
+// app.use(express.static(path.resolve(__dirname, '../')));
 
-app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '..', 'index.htm'));
-});
+// app.get('/', (req, res) => {
+//     res.sendFile(path.resolve(__dirname, '..', 'index.htm'));
+// });
 //app.use(express.static(path.resolve(__dirname)));
 //app.use(express.static) // Zakładając, że index.htm jest w folderze 'public'
 // 1. IMPORT MODELU (Ważne, aby endpoint wiedział co to jest MonthlyReport)
+const app = express();
+
+// 1. Middleware
+app.use(express.json());
+
+// 2. Ścieżka do frontendu (wyjście z folderu 'server' do głównego katalogu)
+const frontendPath = path.resolve(__dirname, '..');
+
+// 3. Serwowanie plików statycznych (HTML, CSS, JS)
+app.use(express.static(frontendPath));
+
+// 4. Twoje trasy API (przykład)
+// app.use('/api/tenants', tenantRoutes);
+
+// 5. Obsługa strony głównej
+app.get('/', (req, res) => {
+    res.sendFile(path.join(frontendPath, 'index.htm'));
+});
 const MonthlyReport = require("./models/MonthlyReport")
 const FixedExpensesReport = require("./models/FixedExpensesReport")
 const Tenant = require("./models/TenantsReport")
