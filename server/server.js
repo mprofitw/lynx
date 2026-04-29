@@ -1,3 +1,8 @@
+
+const express = require("express")
+const mongoose = require("mongoose")
+const cors = require("cors")
+require("dotenv").config()
 const path = require('path');
 
 app.use(express.static(path.resolve(__dirname, '../')));
@@ -7,11 +12,6 @@ app.get('/', (req, res) => {
 });
 //app.use(express.static(path.resolve(__dirname)));
 //app.use(express.static) // Zakładając, że index.htm jest w folderze 'public'
-const express = require("express")
-const mongoose = require("mongoose")
-const cors = require("cors")
-require("dotenv").config()
-
 // 1. IMPORT MODELU (Ważne, aby endpoint wiedział co to jest MonthlyReport)
 const MonthlyReport = require("./models/MonthlyReport")
 const FixedExpensesReport = require("./models/FixedExpensesReport")
