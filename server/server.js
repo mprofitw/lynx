@@ -16,6 +16,7 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 const folderGłówny = path.resolve(__dirname, '..');
+app.use(express.static(folderGłówny));
 // 3. POŁĄCZENIE Z BAZĄ
 mongoose
 	.connect(process.env.MONGO_URI)
