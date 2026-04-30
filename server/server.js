@@ -2,6 +2,7 @@ const express = require("express")
 const mongoose = require("mongoose")
 const cors = require("cors")
 const path = require('path');
+
 require("dotenv").config()
 
 // 1. IMPORT MODELU (Ważne, aby endpoint wiedział co to jest MonthlyReport)
