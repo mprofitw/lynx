@@ -1,6 +1,7 @@
 const express = require("express")
 const mongoose = require("mongoose")
 const cors = require("cors")
+const path = require('path');
 require("dotenv").config()
 
 // 1. IMPORT MODELU (Ważne, aby endpoint wiedział co to jest MonthlyReport)
@@ -179,3 +180,6 @@ const PORT = process.env.PORT || 5000
 app.listen(PORT, () => {
 	console.log(`🚀 Serwer działa na porcie ${PORT}`)
 })
+app.get('/', (req, res) => {
+    res.sendFile(path.join(folderGłówny, 'index.htm'));
+});
