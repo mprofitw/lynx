@@ -336,7 +336,7 @@ const handleUpdateAndSave = async (e) => {
 // Funkcja wysyłająca (czysta)
 async function saveToDatabase(data) {
 	try {
-		const response = await fetch("http://localhost:5000/api/reports", {
+		const response = await fetch("/api/reports", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify(data),
@@ -373,7 +373,7 @@ const loadSettingsFromDatabase = async () => {
 
 	try {
 		const response = await fetch(
-			`http://localhost:5000/api/settings/${user}/${propertyId}`,
+			`/api/settings/${user}/${propertyId}`,
 		)
 
 		if (response.status === 404) {
@@ -426,7 +426,7 @@ const saveSettingsToDatabase = async (e) => {
 		},
 	}
 	try {
-		const response = await fetch("http://localhost:5000/api/settings", {
+		const response = await fetch("/api/settings", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify(settingsData),
@@ -660,7 +660,7 @@ const loadFullYearDashboard = async () => {
 
 		try {
 			const response = await fetch(
-				`http://localhost:5000/api/reports/${propertyId}/${queryYear}/${month}`,
+				`/api/reports/${propertyId}/${queryYear}/${month}`,
 			)
 
 			if (response.ok) {
