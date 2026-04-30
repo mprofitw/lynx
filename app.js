@@ -511,7 +511,7 @@ const loadDataFromDatabase = async () => {
 
 	try {
 		const response = await fetch(
-			`http://localhost:5000/api/reports/${propertyId}/${year}/${month}`,
+			`/api/reports/${propertyId}/${year}/${month}`,
 	
 			
 		)
@@ -836,7 +836,7 @@ const fetchTenants = async () => {
 	const user = "65f123456789012345678901" // Twoje ID użytkownika
 
 	try {
-		const response = await fetch(`http://localhost:5000/api/tenants/${user}`)
+		const response = await fetch(`/api/tenants/${user}`)
 
 		if (!response.ok) throw new Error("Failed to fetch tenants")
 
@@ -904,7 +904,7 @@ document
 
 		try {
 			const response = await fetch(
-				`http://localhost:5000/api/tenants/${tenantIdToDelete}`,
+				`/api/tenants/${tenantIdToDelete}`,
 				{
 					method: "DELETE",
 				},
@@ -989,8 +989,8 @@ tenantForm.addEventListener("submit", async (e) => {
 	// DECYZJA: Edycja (PUT) czy Nowy (POST)?
 	const isEditing = currentEditingTenantId !== null
 	const url = isEditing
-		? `http://localhost:5000/api/tenants/${currentEditingTenantId}`
-		: "http://localhost:5000/api/tenants"
+		? `/api/tenants/${currentEditingTenantId}`
+		: "/api/tenants"
 	const method = isEditing ? "PUT" : "POST"
 
 	try {
